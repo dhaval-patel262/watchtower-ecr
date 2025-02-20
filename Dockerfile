@@ -6,7 +6,7 @@ RUN apk add --no-cache libc6-compat gcc g++ git go \
 
 # Final image has to be alpine, scratch doesn't support our env vars or credentials file
 FROM alpine:latest
-COPY --from=v2tec/watchtower:latest / /
+COPY --from=containrrr/watchtower:latest / /
 COPY --from=build /root/go/bin/docker-credential-ecr-login /bin/docker-credential-ecr-login
 
 ENTRYPOINT ["/watchtower"]
